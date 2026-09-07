@@ -1,0 +1,26 @@
+body{
+    background-color: white;
+    user-select: none;
+}
+*{
+    font-weight: 200;
+    margin: 0;
+    text-align: center;
+}
+h1,h2{
+    margin-top: 20px;
+}
+p{
+    margin-top: 10px;
+}
+a{
+    text-decoration: none;
+    color: rgb(0,50,255);
+    transition: color 0.3s ease;
+}
+a:hover{
+    color: rgb(0,100,255);
+}
+a:active{
+    color: rgb(0,150,255);
+}
