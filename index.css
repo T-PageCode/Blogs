@@ -24,3 +24,53 @@ a:hover{
 a:active{
     color: rgb(0,150,255);
 }
+.blogs{
+    display: inline-flex;
+    flex-direction: column;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(190,190,190);
+    border-radius: 20px;
+    filter: drop-shadow(0 10px 10px rgb(0,0,0,0.2));
+    transition: filter 0.3s ease,
+    border-color 0.3s ease;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.blogs:hover{
+    filter: drop-shadow(0 15px 20px rgb(150,0,255,0.3));
+    border-color: rgb(150,0,255);
+}
+.blogs h1{
+    font-size: 25px;
+    font-weight: 400;
+}
+.blogs p{
+    margin: 10px auto;
+    width: 80%;
+}
+.blogs button{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 150px;
+    height: 30px;
+    background-color: rgb(150,0,255);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    filter: drop-shadow(0 5px 10px rgb(150,0,255,0.6));
+    transition: filter 0.3s ease,
+    background-color 0.3s ease;
+}
+.blogs button:hover{
+    filter: drop-shadow(0 10px 10px rgb(120,0,255,0.6));
+    background-color: rgb(120,0,255);
+}
+.blogs button:active{
+    filter: drop-shadow(0 10px 10px rgb(90,0,255,0.6));
+    background-color: rgb(90,0,255);
+}
