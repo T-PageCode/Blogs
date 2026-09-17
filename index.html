@@ -28,6 +28,20 @@
         document.addEventListener("contextmenu",(e) => {
             e.preventDefault();
         })
+        let titleTimeout = null;
+        let pageTitle = document.title;
+        document.addEventListener("visibilitychange",() => {
+            clearTimeout(titleTimeout);
+            if (document.hidden) {
+                document.title = "咦？跑哪去了？";
+            }
+            else {
+                document.title = "找到了！";
+                titleTimeout = setTimeout(() => {
+                    document.title = pageTitle;
+                },2000)
+            }
+        })
     </script>
 </body>
 </html>
