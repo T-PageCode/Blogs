@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>火绒危险 - T-PageCode Blogs</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="content">
+        <h1>火绒危险 - T-PageCode Blogs</h1>
+        <h2>GitHub的<a href="https://github.com/T-PageCode/Huorong-Danger-Software-Prank/">仓库链接</a></h2>
+        <p>我在用火绒，“火绒危险软件”是恶搞程序。</p>
+        <h1>图片展示：</h1>
+        <img src="./hrdshow.png" style="height: 400px;">
+        <h3>甚至把火绒安全的圆角窗口和自定义标题栏给还原出来了。</h3>
+        <p>是参考火绒安全的界面。</p>
+        <p>和原版差异还是有点大，但是已经有点还原度了。</p>
+        <h3>图标上的“<span>已破坏&nbsp;114514&nbsp;天</span>”</h3>
+        <p>这个是我把网络梗恶搞在这里的，不是真破坏了114514天。</p>
+        <h2>实际的功能</h2>
+        <p>纯纯恶搞界面，根本不能杀毒。</p>
+        <h2><span>免责声明</span></h2>
+        <p>此程序为恶搞软件，和火绒安全没有任何关系。</p>
+        <h2>火绒危险</h2>
+        <h3><a href="https://github.com/T-PageCode/Huorong-Danger-Software-Prank/releases">下载</a></h3>
+        <h2>火绒正在破坏您的电脑</h2>
+        <p>依旧恶搞啊</p>
+    </div>
+    <div id="more-blogs">
+        <h1>更多Blogs</h1>
+        <div class="blogs">
+            <h1>钓鱼网站</h1>
+            <p>钓鱼网站是下载木马的网站，请不要前往这些网站。</p>
+            <button onclick="window.location.href='./phishsite/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>火绒BBS</h1>
+            <p>这是我的火绒BBS账号链接。立即前往。</p>
+            <button onclick="window.open('https://bbs.huorong.cn/home.php?mod=space&username=T-PageCode','hrbbs')">立即前往</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("contextmenu",(e) => {
+            e.preventDefault();
+        })
+        let titleTimeout = null;
+        let pageTitle = document.title;
+        document.addEventListener("visibilitychange",() => {
+            clearTimeout(titleTimeout);
+            if (document.hidden) {
+                document.title = "咦？跑哪去了？";
+            }
+            else {
+                document.title = "找到了！";
+                titleTimeout = setTimeout(() => {
+                    document.title = pageTitle;
+                },2000)
+            }
+        })
+        document.querySelectorAll("*").forEach((fe) => {
+            fe.draggable = false;
+            fe.target = "newpage";
+        })
+    </script>
+</body>
+</html>

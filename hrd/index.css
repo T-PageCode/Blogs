@@ -1,0 +1,128 @@
+body{
+    background: linear-gradient(180deg,rgb(0,100,255),rgb(0,255,255));
+    background-attachment: fixed;
+    user-select: none;
+}
+*{
+    font-weight: 200;
+    margin: 0;
+    text-align: center;
+    scrollbar-color: rgb(0,150,255) rgb(0,200,255);
+    overflow: hidden;
+}
+h1{
+    margin-top: 20px;
+}
+h2{
+    margin-top: 10px;
+}
+h3,h4{
+    margin-top: 5px;
+}
+p{
+    margin-top: 10px;
+}
+span{
+    color: rgb(0,150,255);
+}
+a{
+    text-decoration: none;
+    color: rgb(0,50,255);
+    transition: color 0.3s ease;
+}
+a:hover{
+    color: rgb(0,100,255);
+}
+a:active{
+    color: rgb(0,150,255);
+}
+#content{
+    position: absolute;
+    top: 580px;
+    left: calc(50% - 150px);
+    transform: translate(-50%,-50%);
+    background-color: white;
+    width: calc(100% - 350px);
+    height: 1080px;
+    border-radius: 20px;
+    border: 1px solid rgb(190,190,190);
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    transition: border-color 0.3s ease,
+    filter 0.3s ease;
+}
+#content:hover{
+    border-color: rgb(50,0,255);
+    filter: drop-shadow(0 15px 20px rgba(50,0,255,0.7));
+}
+#content img{
+    border-radius: 20px;
+    border: 1px solid rgb(190,190,190);
+    margin-top: 20px;
+}
+#more-blogs{
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    width: 280px;
+    height: 620px;
+    background-color: white;
+    border: 1px solid rgb(190,190,190);
+    border-radius: 20px;
+    filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    transition: border-color 0.3s ease,
+    filter 0.3s ease;
+}
+#more-blogs:hover{
+    border-color: rgb(50,0,255);
+    filter: drop-shadow(0 15px 20px rgba(50,0,255,0.7));
+}
+.blogs{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(255,255,255);
+    border: 1px solid rgb(190,190,190);
+    border-radius: 20px;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+    transition: filter 0.3s ease,
+    border-color 0.3s ease;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.blogs:hover{
+    filter: drop-shadow(0 15px 20px rgb(150,0,255,0.3));
+    border-color: rgb(150,0,255);
+}
+.blogs h1{
+    font-size: 25px;
+    font-weight: 400;
+}
+.blogs p{
+    margin: 10px auto;
+    width: 80%;
+}
+.blogs button{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 150px;
+    height: 30px;
+    background-color: rgb(150,0,255);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    filter: drop-shadow(0 5px 10px rgb(150,0,255,0.6));
+    transition: filter 0.3s ease,
+    background-color 0.3s ease;
+}
+.blogs button:hover{
+    filter: drop-shadow(0 10px 10px rgb(120,0,255,0.6));
+    background-color: rgb(120,0,255);
+}
+.blogs button:active{
+    filter: drop-shadow(0 10px 10px rgb(90,0,255,0.6));
+    background-color: rgb(90,0,255);
+}
