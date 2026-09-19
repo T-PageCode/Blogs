@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>写一个简单C++能崩溃 - T-PageCode Blogs</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="black"></div>
+    <div id="content">
+        <h1>写简单C++能崩溃 - T-PageCode Blogs</h1>
+        <p>你敢相信吗？写一个简单C++能让程序崩溃？</p>
+        <h2>调用空指针内存</h2>
+        <p>第一步：调用空指针内存（示例：int *p = NULL）</p>
+        <p>第二步：写入到空指针内存（示例：*p = 随便编个数字）</p>
+        <h2>源代码</h2>
+        <p>本实验使用Visual Studio运行（注意不是VS Code）</p>
+        <img src="./cppcode.png" style="height: 300px;">
+        <p>然后呢？你要是运行，Windows直接给你抛出来<span>0xC0000005</span>。</p>
+        <p>虽然这几乎和C语言一模一样，引入stdio.h、int main，但是我创建的其实是C++。</p>
+        <h2>为什么会报错退出？</h2>
+        <p>因为0x00000000（空指针）是Windows禁区。</p>
+        <p>你不能在这里写入、读取等操作。</p>
+        <h3>为什么是Windows禁区？</h3>
+        <p>因为Windows使用虚拟内存，CPU通过页表把虚拟地址映射到物理内存。</p>
+        <p>这听起来很正常，可是？</p>
+        <p>Windows把虚拟地址分成了两块，一个是<span>用户模式</span>和<span>内核模式</span>。</p>
+        <p>简单来讲：</p>
+        <p>用户模式就是应用程序能访问的地方。</p>
+        <p>内核模式就是只有Windows系统内核才能访问的地方。</p>
+        <p>Windows特意把虚拟地址0开始的64KB区域标记为不可访问。</p>
+        <p>（地址是0x00000000到0x0000FFFF）</p>
+        <h3>如果允许呢？</h3>
+        <p>如果允许，应用程序会静默修改内存，可能会破坏其他数据。</p>
+        <p>程序能正常运行，但是行为很诡异，Bug很难定位。</p>
+        <p style="color:red;">还可能会被恶意利用。</p>
+        <p>当然，Linux系统也会禁止程序访问空指针。</p>
+        <h2>示范一下</h2>
+        <p>编译器：Visual Studio Cpp调试控制台</p>
+        <p>软件：Visual Studio</p>
+        <p>项目类型：C++控制台应用</p>
+        <p>OK，不多说了，直接运行！</p>
+        <img src="./vsrun.png" style="height: 315px;">
+        <p>可以发现，没有任何报错弹窗，只有Visual Studio程序退出的提示，原因：</p>
+        <p>这是控制台模式，不是图形界面模式（GUI Mode），Windows不会报错。</p>
+        <p>如果是图形界面模式，那会看到：</p>
+        <p>0xXXXXXXXX指令引用的0x00000000内存，该内存不能为XXXX</p>
+        <p>（注意“X”是占位符，不是真实地址和命令）</p>
+        <h3>如果不通过Visual Studio调试控制台运行</h3>
+        <p>这里拿explorer.exe为例，这是Windows 10文件资源管理器。</p>
+        <img src="./explorer.png" style="height: 360px;">
+        <p>0x00000000.exe就在这里，运行一下这个exe。</p>
+        <img src="./win10run.png" style="height: 315px;">
+        <p>运行后没有文本输出也没有报错弹窗。</p>
+        <p>等了一会后，exe的窗口和进程全部消失。</p>
+        <p>应该是程序崩了，日志不好找，先不说日志。</p>
+        <h2>提示</h2>
+        <p>如果p是nullptr也会同样发生错误，这里给个示例：</p>
+        <img src="./nullptr.png" style="height: 300px;">
+        <p>运行也是一样的<span>0xC0000005</span></p>
+        <p>0x00000000：114514，你肯定动不了我。</p>
+    </div>
+    <div id="more-blogs">
+        <h1>更多Blogs</h1>
+        <div class="blogs">
+            <h1>火绒危险</h1>
+            <p>恶搞Electron程序，安装程序是NSIS。</p>
+            <button onclick="window.location.href='../hrd/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>钓鱼网站</h1>
+            <p>钓鱼网站是下载木马的网站，请不要前往这些网站。</p>
+            <button onclick="window.location.href='../phishsite/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>火绒BBS</h1>
+            <p>这是我的火绒BBS账号链接。立即前往。</p>
+            <button onclick="window.open('https://bbs.huorong.cn/home.php?mod=space&username=T-PageCode','hrbbs')">立即前往</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("contextmenu",(e) => {
+            e.preventDefault();
+        })
+        let titleTimeout = null;
+        let pageTitle = document.title;
+        const black = document.getElementById("black");
+        document.addEventListener("visibilitychange",() => {
+            clearTimeout(titleTimeout);
+            if (document.hidden) {
+                document.title = "咦？跑哪去了？";
+            }
+            else {
+                document.title = "找到了！";
+                titleTimeout = setTimeout(() => {
+                    document.title = pageTitle;
+                },2000)
+            }
+        })
+        document.querySelectorAll("*").forEach((fe) => {
+            fe.draggable = false;
+            fe.target = "newpage";
+        })
+        document.querySelectorAll("#content img").forEach((e) => {
+            e.onclick = () => {
+                const clone = e.cloneNode();
+                clone.className = "body-img";
+                document.body.appendChild(clone);
+                black.style.opacity = "1";
+                black.style.pointerEvents = "auto";
+                requestAnimationFrame(() => {
+                    clone.classList.add("go");
+                })
+                black.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+                clone.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+            };
+        });
+    </script>
+</body>
+</html>

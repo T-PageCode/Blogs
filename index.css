@@ -28,8 +28,8 @@ a:active{
 .blogs{
     display: inline-flex;
     flex-direction: column;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 200px;
     background-color: rgb(255,255,255);
     border: 1px solid rgb(190,190,190);
     border-radius: 20px;
