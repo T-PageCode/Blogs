@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>关闭Windows自动更新 - T-PageCode Blogs</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="black"></div>
+    <div id="content">
+        <h1>关闭Windows更新 - T-PageCode Blogs</h1>
+        <h2>如何关闭Windows自动更新？</h2>
+        <p>很多人都被Windows自动更新拖住，电脑一直提示重启并更新，结果重启后更新失败。</p>
+        <p>不仅<span>费时间</span>还<span>打扰工作</span>，我觉得挺烦人的。</p>
+        <p>那如何关闭Windows自动更新呢？</p>
+        <h3>首先来个组策略禁用</h3>
+        <p>警告：<span>此方法对某些Windows不生效</span>，如果不生效，请尝试使用服务关闭方法。</p>
+        <p>再次警告：<span style="color:rgb(255,160,0);">只有Windows专业版或企业版等才可以，家庭版没有组策略。</span></p>
+        <p>首先按下键盘上的Windows徽标键和R键（注意要<span>一起按</span>）打开运行对话框。</p>
+        <p>然后输入：gpedit.msc</p>
+        <img src="./winrun.png" style="height:350px;">
+        <p>然后你会看到组策略编辑器：</p>
+        <img src="./gpedit.png" style="height:410px;">
+        <p>别看这个界面有点丑陋，还没有深色模式，但是它有着非常多的实用功能。</p>
+        <h3>点击<span>计算机配置</span>，再次点击<span>管理模板</span>，然后点击<span>Windows组件</span>。</h3>
+        <img src="./winupdate.png" style="height:410px;">
+        <h3>点击<span>Windows更新</span>，找到<span>配置自动更新</span>。</h3>
+        <p>双击这个选项，会打开一个窗口。</p>
+        <img src="./ausettings.png" style="height: 550px;">
+        <p>打开后，点击<span>已禁用</span>。</p>
+        <p>点击<span>确定</span>，重启系统以保证设置生效<span>（如果不想重启可以试试不重启）</span></p>
+        <p>然后打开设置。</p>
+        <img src="./settings.png" style="height:435px;">
+        <p>点击<span>Windows更新</span>或<span>更新与安全</span>，如果显示<span>你的组织已关闭自动更新</span>就<span style="color:green;">成功了</span>。</p>
+        <h3>使用服务关闭方法</h3>
+        <p>还是熟悉的运行，按下键盘上的Windows徽标键和R键打开运行对话框。</p>
+        <p>不过这次输入的不是<span>gpedit.msc</span>，而是<span>services.msc</span>。</p>
+        <img src="./winrunservices.png" style="height:350px;">
+        <p>点击确定或者回车，就能打开<span>服务窗口</span>。</p>
+        <img src="./services.png" style="height:450px;">
+        <p>找到<span>Windows Update</span>或者<span>Windows更新</span>，双击这个选项。</p>
+        <p>注意：如果想要更深入的关闭，请到任务计划程序找到UpdateOrchestrator关闭。</p>
+        <p>然后你会看见Windows更新的服务设置窗口。</p>
+        <img src="./serviceswu.png" style="height:740px;">
+        <p>首先点击<span>停止</span>，停止Windows更新服务。</p>
+        <p>然后找到启动类型，点击下拉框，把启动类型改为<span>禁用</span>。</p>
+        <p>还没完呢，点击<span>恢复</span>选项卡。</p>
+        <img src="./wurec.png" style="height:740px;">
+        <p>找到<span>第一次失败</span>、<span>第二次失败</span>和<span>后续失败</span>，点击下拉框，全都改为<span>无操作</span>。</p>
+        <p>然后找到<span>在此时间之后重置失败计数</span>，点击输入框，删除原本的内容。</p>
+        <p>然后在输入框内输入<span>9999</span>。</p>
+        <p>点击<span>确定</span>，再次打开设置：</p>
+        <img src="./settings.png" style="height:435px;">
+        <p>点击<span>Windows更新</span>或<span>更新与安全</span>。</p>
+        <img src="./settingswu.png" style="height:435px;">
+        <p>它可能会直接报错：<span>出现错误。请尝试稍后打开设置</span>。</p>
+        <p>为了再次验证，点击开始菜单：</p>
+        <img src="./startmenu.png" style="height:430px;">
+        <p>找到<span>电源图标</span>。</p>
+        <img src="./startmenuicon.png" style="height:100px;">
+        <p>点击这个图标，如果没有了更新并重启和更新并关机<span style="color:green;">就成功了</span>。</p>
+        <p>但是服务可能会被修改，需要定时检查。</p>
+        <p>这时候，用电脑几天，如果更新没有再次出现，恭喜你，你<span style="color:green;">成功了！</span></p>
+        <p>注意：Windows 7上的GWX.exe用这些手段是没有效果的，可以进PE删除GWX.exe。</p>
+    </div>
+    <div id="more-blogs">
+        <h1>更多Blogs</h1>
+        <div class="blogs">
+            <h1>火绒危险</h1>
+            <p>恶搞Electron程序，安装程序是NSIS。</p>
+            <button onclick="window.location.href='../hrd/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>钓鱼网站</h1>
+            <p>钓鱼网站是下载木马的网站，请不要前往这些网站。</p>
+            <button onclick="window.location.href='../phishsite/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>火绒BBS</h1>
+            <p>这是我的火绒BBS账号链接。立即前往。</p>
+            <button onclick="window.open('https://bbs.huorong.cn/home.php?mod=space&username=T-PageCode','hrbbs')">立即前往</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("contextmenu",(e) => {
+            e.preventDefault();
+        })
+        let titleTimeout = null;
+        let pageTitle = document.title;
+        const black = document.getElementById("black");
+        document.addEventListener("visibilitychange",() => {
+            clearTimeout(titleTimeout);
+            if (document.hidden) {
+                document.title = "咦？跑哪去了？";
+            }
+            else {
+                document.title = "找到了！";
+                titleTimeout = setTimeout(() => {
+                    document.title = pageTitle;
+                },2000)
+            }
+        })
+        document.querySelectorAll("*").forEach((fe) => {
+            fe.draggable = false;
+            fe.target = "newpage";
+        })
+        document.querySelectorAll("#content img").forEach((e) => {
+            e.onclick = () => {
+                const clone = e.cloneNode();
+                clone.className = "body-img";
+                document.body.appendChild(clone);
+                black.style.opacity = "1";
+                black.style.pointerEvents = "auto";
+                requestAnimationFrame(() => {
+                    clone.classList.add("go");
+                })
+                black.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+                clone.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+            };
+        });
+    </script>
+</body>
+</html>

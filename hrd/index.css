@@ -67,13 +67,17 @@ a:active{
     top: 40px;
     right: 20px;
     width: 280px;
-    height: 690px;
+    height: 900px;
     background-color: white;
     border: 1px solid rgb(190,190,190);
     border-radius: 20px;
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
     transition: border-color 0.3s ease,
     filter 0.3s ease;
+}
+#more-blogs:hover{
+    border-color: rgb(50,0,255);
+    filter: drop-shadow(0 15px 20px rgba(50,0,255,0.7));
 }
 #more-blogs:hover{
     border-color: rgb(50,0,255);
