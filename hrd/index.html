@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+    <div id="black"></div>
     <div id="content">
         <h1>火绒危险 - T-PageCode Blogs</h1>
         <h2>GitHub的<a href="https://github.com/T-PageCode/Huorong-Danger-Software-Prank/">仓库链接</a></h2>
@@ -31,7 +32,7 @@
         <div class="blogs">
             <h1>钓鱼网站</h1>
             <p>钓鱼网站是下载木马的网站，请不要前往这些网站。</p>
-            <button onclick="window.location.href='./phishsite/index.html'">查看更多</button>
+            <button onclick="window.location.href='../phishsite/index.html'">查看更多</button>
         </div>
         <div class="blogs">
             <h1>火绒BBS</h1>
@@ -45,6 +46,7 @@
         })
         let titleTimeout = null;
         let pageTitle = document.title;
+        const black = document.getElementById("black");
         document.addEventListener("visibilitychange",() => {
             clearTimeout(titleTimeout);
             if (document.hidden) {
@@ -60,6 +62,34 @@
         document.querySelectorAll("*").forEach((fe) => {
             fe.draggable = false;
             fe.target = "newpage";
+        })
+        document.querySelectorAll("#content img").forEach((e) => {
+            e.onclick = () => {
+                const clone = e.cloneNode();
+                clone.className = "body-img";
+                document.body.appendChild(clone);
+                black.style.opacity = "1";
+                black.style.pointerEvents = "auto";
+                requestAnimationFrame(() => {
+                    clone.classList.add("go");
+                })
+                black.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+                clone.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+            };
         })
     </script>
 </body>

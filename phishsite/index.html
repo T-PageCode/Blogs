@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>钓鱼网站 - T-PageCode Blogs</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="black"></div>
+    <div id="content">
+        <h1>钓鱼网站 - T-PageCode Blogs</h1>
+        <p>钓鱼网站是以窃取用户数据、加密文件、盗号、广告推广、窃取密码等为目的的网站。</p>
+        <p style="color:red;">这些网站会诱导你下载银狐木马、病毒、挖矿木马等恶意软件。</p>
+        <h2>如何避免钓鱼网站？</h2>
+        <p>想避免钓鱼网站，可以这样做：</p>
+        <span>直接输入官网网址</span><br>
+        <span>尽量不访问不知名网站</span><br>
+        <span>想下载软件问AI官网地址<span style="color:red;">(需要核对)</span></span><br>
+        <span>用更优质的搜索引擎<span style="color:red;">(仍有风险)</span></span><br>
+        <span>访问<a href="https://t-pagecode.github.io/Phishing-Rogue-Site/钓鱼网站.html">T-PageCode恶意网址库</a><span style="color:green;">(可以看到钓鱼网站和官网地址)</span></span>
+        <h2>截图示例：必应搜索有大量仿冒网站</h2>
+        <p>必应搜索有大量仿冒常用软件的网站，如驱动总裁：</p>
+        <img src="./sysceophish.png" style="height: 335px;" id="scp">
+        <p>还有仿冒火绒的：</p>
+        <img src="./hrphish.png" style="height: 370px;" id="hrp">
+        <p style="color:red;">可以看到搜索引擎中有大量仿冒网站。</p>
+        <h2>钓鱼网站常常出现在搜索引擎的原因</h2>
+        <p>钓鱼网站出现在搜索引擎的原因是Meta标签、Title标签和隐藏h1造成的。</p>
+        <p>举个典型示例：</p>
+        <span>&lt;meta&nbsp;name=&quot;keywords&quot;&nbsp;content=&quot;huorong,火绒电脑版,杀毒软件,火绒官方下载&quot;&gt;</span><br>
+        <span>&lt;meta&nbsp;name=&quot;description&quot;&nbsp;content=&quot;火绒，有垃圾清理、病毒扫描、文件防护等。&quot;&gt;</span><br>
+        <span>&lt;title&gt;火绒电脑版官方下载 · 杀毒软件  · 火绒安全&lt;/title&gt;</span><br>
+        <span>&lt;h1&gt;火绒官方下载&lt;/h1&gt;</span><br>
+        <p>然后h1的CSS：</p>
+        <span>h1{position: fixed;top:-9999px;left:-9999px;display:none;opacity:0;}</span>
+        <p style="color:red;">这些都是黑客为了SEO优化而写的HTML标签。</p>
+        <p>他们的备案号基本都是假的占位符号：</p>
+        <span>XXXXXXXX</span><br>
+        <span>12345678</span><br>
+        <span>00000000</span>
+        <p>当你查看很多钓鱼网站的源代码时，你会发现：</p>
+        <span>很多无用注释</span><br>
+        <span>CSS堆积</span><br>
+        <span>不暴露在DOM，用后台JavaScript下载木马</span><br>
+        <p>这些都是黑客用AI写的网页，尤其是恶意JS片段，被黑客到处复制到其他恶意域名上。</p>
+        <h3>这些域名后缀基本都是.com.cn，为什么呢？</h3>
+        <p>因为.com.cn后缀注册非常便宜，有些活动只要几块钱，甚至可以免费注册。</p>
+        <p>恶意JS指向的的网址最多的是：noah-ssh.com.cn和game-houtai2.com.cn。</p>
+        <p>因为这些都是典型的<span style="color:red;">恶意软件分发站。</span></p>
+    </div>
+    <div id="more-blogs">
+        <h1>更多Blogs</h1>
+        <div class="blogs">
+            <h1>火绒危险</h1>
+            <p>恶搞Electron程序，安装程序是NSIS。</p>
+            <button onclick="window.location.href='../hrd/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>火绒BBS</h1>
+            <p>这是我的火绒BBS账号链接。立即前往。</p>
+            <button onclick="window.open('https://bbs.huorong.cn/home.php?mod=space&username=T-PageCode','hrbbs')">立即前往</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("contextmenu",(e) => {
+            e.preventDefault();
+        })
+        let titleTimeout = null;
+        let pageTitle = document.title;
+        const black = document.getElementById("black");
+        document.addEventListener("visibilitychange",() => {
+            clearTimeout(titleTimeout);
+            if (document.hidden) {
+                document.title = "咦？跑哪去了？";
+            }
+            else {
+                document.title = "找到了！";
+                titleTimeout = setTimeout(() => {
+                    document.title = pageTitle;
+                },2000)
+            }
+        })
+        document.querySelectorAll("*").forEach((fe) => {
+            fe.draggable = false;
+            fe.target = "newpage";
+        })
+        document.querySelectorAll("#content img").forEach((e) => {
+            e.onclick = () => {
+                const clone = e.cloneNode();
+                clone.className = "body-img";
+                document.body.appendChild(clone);
+                black.style.opacity = "1";
+                black.style.pointerEvents = "auto";
+                requestAnimationFrame(() => {
+                    clone.classList.add("go");
+                })
+                black.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+                clone.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+            };
+        });
+    </script>
+</body>
+</html>

@@ -37,12 +37,12 @@ a:active{
 }
 #content{
     position: absolute;
-    top: 580px;
+    top: 960px;
     left: calc(50% - 150px);
     transform: translate(-50%,-50%);
     background-color: white;
     width: calc(100% - 350px);
-    height: 1080px;
+    height: 1840px;
     border-radius: 20px;
     border: 1px solid rgb(190,190,190);
     filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));

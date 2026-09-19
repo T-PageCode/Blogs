@@ -1,5 +1,6 @@
 body{
-    background-color: white;
+    background: linear-gradient(180deg,rgb(0,100,255),rgb(0,255,255));
+    background-attachment: fixed;
     user-select: none;
 }
 *{
@@ -32,7 +33,7 @@ a:active{
     background-color: rgb(255,255,255);
     border: 1px solid rgb(190,190,190);
     border-radius: 20px;
-    filter: drop-shadow(0 10px 10px rgb(0,0,0,0.2));
+    filter: drop-shadow(0 10px 10px rgb(0,0,0,0.3));
     transition: filter 0.3s ease,
     border-color 0.3s ease;
     margin-top: 20px;
@@ -40,7 +41,7 @@ a:active{
     margin-right: 10px;
 }
 .blogs:hover{
-    filter: drop-shadow(0 15px 20px rgb(150,0,255,0.3));
+    filter: drop-shadow(0 15px 20px rgb(150,0,255,0.8));
     border-color: rgb(150,0,255);
 }
 .blogs h1{
