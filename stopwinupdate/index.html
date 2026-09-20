@@ -26,7 +26,7 @@
         <img src="./winupdate.png" style="height:410px;">
         <h3>点击<span>Windows更新</span>，找到<span>配置自动更新</span>。</h3>
         <p>双击这个选项，会打开一个窗口。</p>
-        <img src="./ausettings.png" style="height: 550px;">
+        <img src="./wusettings.png" style="height: 550px;">
         <p>打开后，点击<span>已禁用</span>。</p>
         <p>点击<span>确定</span>，重启系统以保证设置生效<span>（如果不想重启可以试试不重启）</span></p>
         <p>然后打开设置。</p>
@@ -39,7 +39,6 @@
         <p>点击确定或者回车，就能打开<span>服务窗口</span>。</p>
         <img src="./services.png" style="height:450px;">
         <p>找到<span>Windows Update</span>或者<span>Windows更新</span>，双击这个选项。</p>
-        <p>注意：如果想要更深入的关闭，请到任务计划程序找到UpdateOrchestrator关闭。</p>
         <p>然后你会看见Windows更新的服务设置窗口。</p>
         <img src="./serviceswu.png" style="height:740px;">
         <p>首先点击<span>停止</span>，停止Windows更新服务。</p>
@@ -49,6 +48,8 @@
         <p>找到<span>第一次失败</span>、<span>第二次失败</span>和<span>后续失败</span>，点击下拉框，全都改为<span>无操作</span>。</p>
         <p>然后找到<span>在此时间之后重置失败计数</span>，点击输入框，删除原本的内容。</p>
         <p>然后在输入框内输入<span>9999</span>。</p>
+        <h2><span style="color:rgb(255,160,0);">重要一步！</span></h2>
+        <p>还需要关闭更新Orchestrator服务和Background Intelligent Transfer Service服务（照着前面的样子做）</p>
         <p>点击<span>确定</span>，再次打开设置：</p>
         <img src="./settings.png" style="height:435px;">
         <p>点击<span>Windows更新</span>或<span>更新与安全</span>。</p>
