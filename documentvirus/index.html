@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>关闭Windows自动更新 - T-PageCode Blogs</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../font.css">
+</head>
+<body>
+    <div id="black"></div>
+    <div id="content">
+        <h1>Python加密病毒 - T-PageCode Blogs</h1>
+        <p>我用Python写的加密病毒，千万不要在实体机运行！</p>
+        <p>通过<span>Python合法API</span>修改，所以杀毒软件不会报毒。</p>
+        <a href="https://www.xiaohongshu.com/explore/6ac063a6000000000a0272f3?xsec_token=ABq8G3NHbtvvkYVLhaKN9z3iZuy92SO23HLo4tn5MmfII=&xsec_source=pc_feed">视频测试链接（小红书）</a>
+        <p>打开Bugdows 11啊不，Windows 11开始测试：</p>
+        <p>这个虚拟机准备了一些测试内容，比如<span>HTML或者图片等</span>。</p>
+        <img src="./win11vm.jpg" style="height: 350px;">
+        <p>来自网络或自己做的图片素材：</p>
+        <img src="./code.png" style="height: 320px;">
+        <img src="./happy.jpg" style="height: 162.5px;">
+        <img src="./onlygeek.jpeg" style="height: 335px;">
+        <p>哎不对，<span>窗口圆角呢</span>？改一下注册表。</p>
+        <p>注册表路径：<span>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\Dwm</span></p>
+        <p>新建一个DWORD值，命名为<span>ForceEffectMode</span>，双击改成<span>2</span>。</p>
+        <p>回归主题，先运行病毒。</p>
+        <p>一共有<span>5个警告</span>弹窗啊，太多了，因为提示用户这是病毒。</p>
+        <p>现在来数数弹窗的数量。</p>
+        <p>这是第一个弹窗。</p>
+        <img src="./warning1.jpg" style="height: 215px;">
+        <p>这是第二个弹窗。</p>
+        <img src="./warning2.jpg" style="height: 215px;">
+        <p>这是第三个弹窗。</p>
+        <img src="./warning3.jpg" style="height: 225px;">
+        <p>这是第四个弹窗。</p>
+        <img src="./warning4.jpg" style="height: 207px;">
+        <p>这是第五个弹窗。</p>
+        <img src="./warning5.jpg" style="height: 207px;">
+        <p>点<span>是</span>。</p>
+        <img src="./error.jpg" style="height: 205px;">
+        <p>可能会出现这个错误提示，但是如果是Administrator用户，可能只是一些小问题。</p>
+        <img src="./info.jpg" style="height: 290px;">
+        <p>运行好了，现在来看一下。</p>
+        <img src="./virus.jpg" style="height: 340px;">
+        <p>图片打不开，文件显示加密提示，病毒赢了。</p>
+        <p>运行要求：<span>需要激活管理员账户</span>，并且<span>登录管理员账户</span>，需要<span>文档文件夹不改路径</span>。</p>
+    </div>
+    <div id="more-blogs">
+        <h1>更多Blogs</h1>
+        <div class="blogs">
+            <h1>火绒危险</h1>
+            <p>恶搞Electron程序，安装程序是NSIS。</p>
+            <button onclick="window.location.href='../hrd/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>钓鱼网站</h1>
+            <p>钓鱼网站是下载木马的网站，请不要前往这些网站。</p>
+            <button onclick="window.location.href='../phishsite/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>写一个简单C++能崩溃</h1>
+            <p>你敢相信吗？写一个简单C++能让程序崩溃？</p>
+            <button onclick="window.location.href='../cppcrash/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>火绒BBS</h1>
+            <p>这是我的火绒BBS账号链接。立即前往。</p>
+            <button onclick="window.open('https://bbs.huorong.cn/home.php?mod=space&username=T-PageCode','hrbbs')">立即前往</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("contextmenu",(e) => {
+            e.preventDefault();
+        })
+        let titleTimeout = null;
+        let pageTitle = document.title;
+        const black = document.getElementById("black");
+        document.addEventListener("visibilitychange",() => {
+            clearTimeout(titleTimeout);
+            if (document.hidden) {
+                document.title = "咦？跑哪去了？";
+            }
+            else {
+                document.title = "找到了！";
+                titleTimeout = setTimeout(() => {
+                    document.title = pageTitle;
+                },2000)
+            }
+        })
+        document.querySelectorAll("*").forEach((fe) => {
+            fe.draggable = false;
+            fe.target = "newpage";
+        })
+        document.querySelectorAll("#content img").forEach((e) => {
+            e.onclick = () => {
+                const clone = e.cloneNode();
+                clone.className = "body-img";
+                document.body.appendChild(clone);
+                black.style.opacity = "1";
+                black.style.pointerEvents = "auto";
+                requestAnimationFrame(() => {
+                    clone.classList.add("go");
+                })
+                black.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+                clone.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+            };
+        });
+    </script>
+</body>
+</html>
