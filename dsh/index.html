@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DeepSeek Harness - T-PageCode Blogs</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../font.css">
+</head>
+<body>
+    <div id="black"></div>
+    <div id="content">
+        <h1>DeepSeek Harness - T-PageCode Blogs</h1>
+        <p>DeepSeek最近推出了一个桌面端的DeepSeek版本，是DeepSeek Harness。</p>
+        <h2>充值</h2>
+        <p>你需要先充值才能调用DeepSeek模型。</p>
+        <p>前往<a href="https://platform.deepseek.com">DeepSeek API开发平台</a>充值。</p>
+        <h2>下载与安装、使用</h2>
+        <p>下载，先访问<a href="https://deepseek.com/harness">https://deepseek.com/harness</a></p>
+        <p>注意，现在的DeepSeek Harness是<span>开箱即用</span>的状态，不用手动敲命令行了。</p>
+        <p>访问后是这样子的：</p>
+        <img src="./dshpage.jpg" style="height: 340px">
+        <p>然后点击<span>“下载Windows版”</span>，如果你是macOS用户，就按下那个箭头下载就可以了。</p>
+        <p>Windows版下载完后，运行这个<span>dsh-latest-windows-x64.exe</span>。</p>
+        <img src="./dshexe.jpg" style="height: 550px">
+        <p>运行后，点击<span>选择安装位置</span>，输入或选择你想要安装的位置。</p>
+        <img src="./dshinst.jpg" style="height: 380px">
+        <p>等他安装完，打开后就是设置向导，可以跳过<span>（但是必须登录账号或者填API Key）</span></p>
+        <p>然后就是这个样子：</p>
+        <img src="./dshmain.jpg" style="height: 380px">
+        <p>注意那个<span>“秘”</span>，那是我的手机号是隐私信息所以隐藏了。</p>
+        <p>你还可以让DeepSeek或自己装一些插件：</p>
+        <img src="./dshplugin.jpg" style="height: 290px">
+        <p>然后就可以和DeepSeek对话了</p>
+    </div>
+    <div id="more-blogs">
+        <h1>更多Blogs</h1>
+        <div class="blogs">
+            <h1>火绒危险</h1>
+            <p>恶搞Electron程序，安装程序是NSIS。</p>
+            <button onclick="window.location.href='../hrd/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>钓鱼网站</h1>
+            <p>钓鱼网站是下载木马的网站，请不要前往这些网站。</p>
+            <button onclick="window.location.href='../phishsite/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>写一个简单C++能崩溃</h1>
+            <p>你敢相信吗？写一个简单C++能让程序崩溃？</p>
+            <button onclick="window.location.href='../cppcrash/index.html'">查看更多</button>
+        </div>
+        <div class="blogs">
+            <h1>火绒BBS</h1>
+            <p>这是我的火绒BBS账号链接。立即前往。</p>
+            <button onclick="window.open('https://bbs.huorong.cn/home.php?mod=space&username=T-PageCode','hrbbs')">立即前往</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("contextmenu",(e) => {
+            e.preventDefault();
+        })
+        let titleTimeout = null;
+        let pageTitle = document.title;
+        const black = document.getElementById("black");
+        document.addEventListener("visibilitychange",() => {
+            clearTimeout(titleTimeout);
+            if (document.hidden) {
+                document.title = "咦？跑哪去了？";
+            }
+            else {
+                document.title = "找到了！";
+                titleTimeout = setTimeout(() => {
+                    document.title = pageTitle;
+                },2000)
+            }
+        })
+        document.querySelectorAll("*").forEach((fe) => {
+            fe.draggable = false;
+            fe.target = "newpage";
+        })
+        document.querySelectorAll("#content img").forEach((e) => {
+            e.onclick = () => {
+                const clone = e.cloneNode();
+                clone.className = "body-img";
+                document.body.appendChild(clone);
+                black.style.opacity = "1";
+                black.style.pointerEvents = "auto";
+                requestAnimationFrame(() => {
+                    clone.classList.add("go");
+                })
+                black.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+                clone.onclick = () => {
+                    clone.classList.remove("go");
+                    black.style.opacity = "0";
+                    black.style.pointerEvents = "none";
+                    setTimeout(() => {
+                        clone.remove();
+                    },300)
+                }
+            };
+        });
+    </script>
+</body>
+</html>
